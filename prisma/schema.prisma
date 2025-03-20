@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Barang{
+  id Int @id @default(autoincrement())
+  nama_barang String
+  keterangan  String
+  gambar      String
+  barang_masuk BarangMasuk[]
+  barang_keluar BarangKeluar[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("barang")
+}
+
+model BarangMasuk{
+  id Int @id @default(autoincrement())
+  barang Barang @relation(fields: [id_barang], references: [id])
+  id_barang Int
+  jumlah  Int
+  catatan String
+
+  @@map("barang_masuk")
+}
+
+model BarangKeluar{
+  id Int @id @default(autoincrement())
+  barang Barang @relation(fields: [id_barang], references: [id])
+  id_barang Int
+  jumlah  Int
+  catatan String
+
+  @@map("barang_keluar")
+}
+
+// npx prisma migrate dev --name posts
+// untuk proses migration prisma ke sql

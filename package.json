@@ -1,0 +1,20 @@
+{
+  "name": "latihan_inventaris_barang",
+  "version": "1.0.0",
+  "description": "project1 latihan node js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.5.0",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "multer": "^1.4.5-lts.1"
+  }
+}
